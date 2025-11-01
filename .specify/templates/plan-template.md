@@ -30,8 +30,10 @@
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
-
-[Gates determined based on constitution file]
+- Lightweight Delivery: Document the full dependency list and justify each runtime asset; confirm the projected critical-path payload ≤ 150 KB gzipped.
+- Authentic Craftsmanship Story: Outline copy blocks covering plastering and soundproofing services, trust signals, and the primary call-to-action placement.
+- Accessible Responsiveness: Describe planned breakpoints, accessibility considerations, and target Lighthouse scores (Accessibility ≥ 90, Performance ≥ 90 on mobile).
+- Operational Simplicity: Specify the static hosting target, required CI checks (link checker + Lighthouse budgets), and how content updates flow through a single source of truth.
 
 ## Project Structure
 

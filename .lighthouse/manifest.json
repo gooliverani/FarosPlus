@@ -1,0 +1,15 @@
+[
+  {
+    "url": "http://localhost:4380/index.html",
+    "isRepresentativeRun": true,
+    "htmlPath": "C:\\Users\\vladi\\FarosPlus\\.lighthouse\\localhost-_index_html-2025_11_01_13_16_07.report.html",
+    "jsonPath": "C:\\Users\\vladi\\FarosPlus\\.lighthouse\\localhost-_index_html-2025_11_01_13_16_07.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 0.96,
+      "best-practices": 0.96,
+      "seo": 1,
+      "pwa": 0.29
+    }
+  }
+]

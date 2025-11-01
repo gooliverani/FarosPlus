@@ -1,0 +1,17 @@
+[
+  {
+    "name": "maxNumericValue",
+    "expected": 0,
+    "actual": 40,
+    "values": [
+      40
+    ],
+    "operator": "<=",
+    "passed": false,
+    "auditId": "unused-javascript",
+    "level": "warn",
+    "url": "http://localhost:4380/index.html",
+    "auditTitle": "Reduce unused JavaScript",
+    "auditDocumentationLink": "https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/"
+  }
+]

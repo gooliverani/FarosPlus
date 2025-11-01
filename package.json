@@ -1,0 +1,46 @@
+{
+  "name": "farosplus-landing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest run && playwright test",
+    "test:unit": "vitest run",
+    "test:a11y": "playwright test",
+    "lighthouse:ci": "node scripts/lighthouse/run-budget.mjs",
+    "check:links": "pnpm exec broken-link-checker out -ro",
+    "generate:images": "tsx scripts/images/generate.ts",
+    "analyze:bundle": "next build --analyze"
+  },
+  "dependencies": {
+    "next": "15.0.0",
+    "next-sitemap": "^4.2.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.13.0",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^20.11.0",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+    "@playwright/test": "^1.45.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "broken-link-checker": "^0.7.8",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.0.0",
+    "jsdom": "^24.1.0",
+    "lighthouse": "^12.1.0",
+    "playwright": "^1.45.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.6.0",
+    "vitest": "^1.2.0"
+  }
+}

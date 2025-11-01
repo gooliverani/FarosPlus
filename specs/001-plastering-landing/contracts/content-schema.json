@@ -1,0 +1,276 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://farosplus.example.com/schemas/landing-content.schema.json",
+  "title": "Plastering Landing Page Content",
+  "type": "object",
+  "required": [
+    "flagshipProject",
+    "featuredProjects",
+    "serviceOfferings",
+    "contactChannels",
+    "themePalette"
+  ],
+  "properties": {
+    "flagshipProject": {
+      "$ref": "#/definitions/flagshipProject"
+    },
+    "featuredProjects": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "$ref": "#/definitions/featuredProject"
+      }
+    },
+    "serviceOfferings": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "$ref": "#/definitions/serviceOffering"
+      }
+    },
+    "contactChannels": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/definitions/contactChannel"
+      },
+      "contains": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "const": "phone"
+          }
+        }
+      }
+    },
+    "themePalette": {
+      "$ref": "#/definitions/themePalette"
+    }
+  },
+  "definitions": {
+    "imageAsset": {
+      "type": "object",
+      "required": ["src", "alt", "width", "height"],
+      "properties": {
+        "src": {
+          "type": "string",
+          "pattern": "^/images/"
+        },
+        "alt": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "placeholder": {
+          "type": "string",
+          "description": "Base64-encoded blur placeholder"
+        },
+        "format": {
+          "type": "string",
+          "enum": ["avif", "webp", "jpeg"],
+          "description": "Primary file format"
+        }
+      }
+    },
+    "testimonial": {
+      "type": "object",
+      "required": ["quote", "author"],
+      "properties": {
+        "quote": {
+          "type": "string",
+          "maxLength": 280
+        },
+        "author": {
+          "type": "string",
+          "pattern": "^.+, .+$"
+        },
+        "projectRole": {
+          "type": "string",
+          "maxLength": 40
+        }
+      }
+    },
+    "ctaLink": {
+      "type": "object",
+      "required": ["type", "label", "value"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["phone", "email"]
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 20
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "flagshipProject": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "location",
+        "services",
+        "summary",
+        "heroImage",
+        "resultMetric",
+        "primaryCta"
+      ],
+      "properties": {
+        "id": {
+          "const": "flagship"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "location": {
+          "type": "string"
+        },
+        "services": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 320
+        },
+        "heroImage": {
+          "$ref": "#/definitions/imageAsset"
+        },
+        "resultMetric": {
+          "type": "string"
+        },
+        "testimonial": {
+          "$ref": "#/definitions/testimonial"
+        },
+        "primaryCta": {
+          "$ref": "#/definitions/ctaLink"
+        }
+      }
+    },
+    "featuredProject": {
+      "type": "object",
+      "required": ["id", "title", "location", "serviceCategory", "description", "image"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "location": {
+          "type": "string"
+        },
+        "serviceCategory": {
+          "type": "string",
+          "enum": ["plastering", "soundproofing", "hybrid"]
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 240
+        },
+        "highlight": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "testimonial": {
+          "$ref": "#/definitions/testimonial"
+        },
+        "image": {
+          "$ref": "#/definitions/imageAsset"
+        }
+      }
+    },
+    "serviceOffering": {
+      "type": "object",
+      "required": ["id", "name", "description", "benefits"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "benefits": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "maxLength": 120
+          }
+        }
+      }
+    },
+    "contactChannel": {
+      "type": "object",
+      "required": ["type", "label", "value"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["phone", "email"]
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 20
+        },
+        "value": {
+          "type": "string"
+        },
+        "availability": {
+          "type": "string",
+          "maxLength": 30
+        }
+      }
+    },
+    "themePalette": {
+      "type": "object",
+      "required": ["primary", "secondary", "neutral"],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "pattern": "^#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$"
+        },
+        "secondary": {
+          "type": "string",
+          "pattern": "^#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$"
+        },
+        "neutral": {
+          "type": "string",
+          "pattern": "^#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$"
+        },
+        "gradient": {
+          "type": "string"
+        },
+        "technicalLines": {
+          "type": "string",
+          "pattern": "^/images/patterns/"
+        }
+      }
+    }
+  }
+}
